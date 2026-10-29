@@ -1,50 +1,59 @@
 # TeethakingBuilds
 
-> Building open-source Web3 infrastructure — grants, payments, and on-chain tooling on Base, Stellar, and Sui.
+> Building open-source Web3 infrastructure — access control, grants, and bounties on Stellar and Base.
 
 ---
 
 ## What we build
 
-We ship protocol-level tooling for the decentralized web. Our focus is on making on-chain coordination — grants, milestones, payments, and identity — accessible, transparent, and trustless.
+We ship protocol-level tooling for the decentralized web. Our focus is on making on-chain coordination — authorization, grants, milestones, and payments — accessible, transparent, and trustless.
 
-| Project | Stack | Chain | Status |
-|---|---|---|---|
-| [GrantStream](https://github.com/TeethakingBuilds/GrantStream) | Solidity · React · Rust | Base | 🟢 Active |
-| SuiPulse | Move · React | Sui | 🔨 Building |
-| QIE MerchantPay | Stellar · React | QIE | 🔨 Building |
+### Keygate — capability-based access control for Soroban
+
+| Repo | What it does | Stack |
+|------|--------------|-------|
+| [keygate-contracts](https://github.com/TeethakingBuilds/keygate-contracts) | Capability registry, policy rules, latching circuit breaker, and m-of-n multisig relay | Rust · Soroban |
+| [keygate-server](https://github.com/TeethakingBuilds/keygate-server) | Read-only decision server that mirrors on-chain capabilities from Soroban events and answers authorization queries, failing closed | TypeScript |
+| [keygate-client](https://github.com/TeethakingBuilds/keygate-client) | SDK to build contract calls, sign authorizations, and verify a server decision before trusting it | TypeScript |
+
+### Grants and bounties
+
+| Repo | What it does | Stack | Chain |
+|------|--------------|-------|-------|
+| [GrantStream](https://github.com/TeethakingBuilds/GrantStream) | On-chain grant milestone disbursement. Funders lock funds and release them as grantees hit verifiable milestones | Solidity · React · Rust | Base |
+| [BountyHex](https://github.com/TeethakingBuilds/BountyHex) | Trustless, automated open-source bounty protocol | Soroban · JavaScript | Stellar |
 
 ---
 
 ## Tech stack
 
 ```
+Rust · Soroban SDK · axum · clap
+TypeScript · Node.js · React · Vite
 Solidity · Hardhat · ethers.js · wagmi
-Rust · Soroban SDK · ethers-rs · axum · clap
-React · TypeScript · Vite
 IPFS · Pinata
-Base · Stellar · Sui
+Stellar · Base
 ```
 
 ---
 
 ## Open source
 
-All repos are MIT licensed and open for contributions. We actively participate in:
+Repos are open for contributions (Apache-2.0 for Keygate, MIT for the rest). We actively participate in:
 
 - **Drips Wave** — open source funding program
-- **Stellar ecosystem grants** — Soroban contract contributions
+- **Stellar ecosystem** — Soroban contract contributions
 - **ETH hackathons** — Base, ETHGlobal, and ecosystem sprints
 
-If you want to contribute, pick up any open issue tagged `good first issue` or `help wanted`.
+Want to contribute? Pick up any open issue tagged `good first issue` or `help wanted`.
 
 ---
 
 ## Get in touch
 
 - GitHub: [@teethaking](https://github.com/teethaking)
-- Built on Base 🔵 · Stellar 🌟 · Sui 🌊
+- Built on Stellar 🌟 · Base 🔵
 
 ---
 
-<sub>Every line of code ships toward a more trustless, open internet.</sub>
+Every line of code ships toward a more trustless, open internet.
